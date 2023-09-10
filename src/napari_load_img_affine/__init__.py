@@ -2,8 +2,8 @@ try:
     from ._version import version as __version__
 except ImportError:
     __version__ = "unknown"
-from ._widget import widget
+from ._widget import example_magic_widget
 
 __all__ = (
-    "widget",
+    "example_magic_widget",
 )
