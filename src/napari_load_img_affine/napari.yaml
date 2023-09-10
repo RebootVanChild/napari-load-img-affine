@@ -2,20 +2,9 @@ name: napari-load-img-affine
 display_name: Napari Load Img Affine
 contributions:
   commands:
-    - id: napari-load-img-affine.make_qwidget
-      python_name: napari_load_img_affine._widget:ExampleQWidget
-      title: Make example QWidget
-    - id: napari-load-img-affine.make_magic_widget
-      python_name: napari_load_img_affine._widget:example_magic_widget
-      title: Make example magic widget
-    - id: napari-load-img-affine.make_func_widget
-      python_name: napari_load_img_affine._widget:example_function_widget
-      title: Make example function widget
+    - id: napari-load-img-affine.make_widget
+      python_name: napari_load_img_affine._widget:widget
+      title: Make widget
   widgets:
-    - command: napari-load-img-affine.make_qwidget
-      display_name: Example QWidget
-    - command: napari-load-img-affine.make_magic_widget
-      display_name: Example Magic Widget
-    - command: napari-load-img-affine.make_func_widget
-      autogenerate: true
-      display_name: Example Function Widget
+    - command: napari-load-img-affine.make_widget
+      display_name: Widget
