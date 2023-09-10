@@ -2,9 +2,9 @@ name: napari-load-img-affine
 display_name: Napari Load Img Affine
 contributions:
   commands:
-    - id: napari-load-img-affine.make_widget
+    - id: napari-load-img-affine.make_magic_widget
       python_name: napari_load_img_affine._widget:widget
       title: Make widget
   widgets:
-    - command: napari-load-img-affine.make_widget
-      display_name: Widget
+    - command: napari-load-img-affine.make_magic_widget
+      display_name: Load Image Affine
