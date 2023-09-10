@@ -30,7 +30,7 @@ if TYPE_CHECKING:
 def widget(
     viewer: Viewer,
     img_file: Sequence[Path],
+    transformation_file_type: str,
     transformation_file: Sequence[Path],
-    transformation_file_type: str = "landmark pairs",
 ):
     print(f"you have selected")
