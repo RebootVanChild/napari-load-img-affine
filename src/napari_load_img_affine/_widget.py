@@ -80,8 +80,9 @@ def widget(
             converters=lambda x: float(eval(x)),
             usecols=(2, 3, 4, 5, 6, 7),
         )
-        source_landmarks = landmarks[:, [2, 1, 0]]
-        target_landmarks = landmarks[:, [5, 4, 3]]
+        # landmark coordinates in xyz order
+        source_landmarks = landmarks[:, [0, 1, 2]]
+        target_landmarks = landmarks[:, [3, 4, 5]]
         affine_matrix = get_affine_matrix_from_landmarks(source_landmarks, target_landmarks)
     if transformation_file_type == "affine matrix":
         affine_matrix = np.loadtxt(
@@ -90,5 +91,5 @@ def widget(
             converters=lambda x: float(eval(x)),
         )
     img_file_path = str(img_file[0])
-    img = viewer.open(img_file_path, plugin='napari-aicsimageio')[0]
+    img = viewer.open(img_file_path, plugin='napari-aicsimageio')
     img.affine = rot_matrix_xyz_to_zyx(affine_matrix)
