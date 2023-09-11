@@ -91,6 +91,6 @@ def widget(
             converters=lambda x: float(eval(x)),
         )
     img_file_path = str(img_file[0])
-    img = viewer.open(img_file_path, plugin='napari-aicsimageio')
+    img = viewer.open(img_file_path, plugin="napari-aicsimageio")
     for layer in img:
         layer.affine = rot_matrix_xyz_to_zyx(affine_matrix)
