@@ -92,7 +92,7 @@ def widget(
     affine_matrix_napari = rot_matrix_xyz_to_zyx(affine_matrix)
     img_file_path = str(img_file[0])
     print("load image")
-    img = viewer.open(img_file_path, plugin='napari-aicsimageio')
+    img = viewer.open(img_file_path)
     print("apply affine")
     for layer in img:
         layer.affine = affine_matrix_napari
