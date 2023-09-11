@@ -34,7 +34,6 @@ def get_affine_matrix_from_landmarks(
         b[i * 3 + 2] = target_points_landmarks[i, 2]
     x = np.linalg.solve(np.dot(A.T, A), np.dot(A.T, b.T))
     matrix = np.append(x.reshape(3, 4), [[0.0, 0.0, 0.0, 1.0]], axis=0)
-    print(matrix)
     return matrix
 
 
@@ -90,7 +89,10 @@ def widget(
             delimiter=",",
             converters=lambda x: float(eval(x)),
         )
+    affine_matrix_napari = rot_matrix_xyz_to_zyx(affine_matrix)
     img_file_path = str(img_file[0])
-    img = viewer.open(img_file_path, plugin="napari-aicsimageio")
+    print("load image")
+    img = viewer.open(img_file_path, plugin='napari-aicsimageio')
+    print("apply affine")
     for layer in img:
-        layer.affine = rot_matrix_xyz_to_zyx(affine_matrix)
+        layer.affine = affine_matrix_napari
