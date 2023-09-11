@@ -37,9 +37,11 @@ def get_affine_matrix_from_landmarks(
     return matrix
 
 
-def rot_matrix_xyz_to_zyx(matrix_xyz):
-    matrix_zyx = np.rot90(matrix_xyz, 2)
-    return matrix_zyx
+def affine_xyz_to_zyx(mxyz):
+    mzyx = mxyz
+    mzyx[:3, :3] = np.rot90(mxyz[:3, :3], 2)
+    mzyx[:3, 3] = np.flip(mxyz[:3, 3])
+    return mzyx
 
 
 @magic_factory(
@@ -89,7 +91,7 @@ def widget(
             delimiter=",",
             converters=lambda x: float(eval(x)),
         )
-    affine_matrix_napari = rot_matrix_xyz_to_zyx(affine_matrix)
+    affine_matrix_napari = affine_xyz_to_zyx(affine_matrix)
     img_file_path = str(img_file[0])
     print("load image")
     img = viewer.open(img_file_path)
